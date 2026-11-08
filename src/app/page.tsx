@@ -91,11 +91,39 @@ export default function Home() {
           <HeroSceneLoader />
         </div>
       </section>
-                  <Services />
-                  <PortfolioPreview />
-                  <AboutPreview />
-                  <Process />
-                  <Contact />
+                        <Services />
+      <PortfolioPreview />
+      <AboutPreview />
+      <Process />
+      <Contact />
+
+      {/* Footer */}
+      <footer className="border-t border-white/10 bg-[#080D19]">
+        <div className="container-width flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="text-lg font-bold text-white">Techvoro</p>
+            <p className="mt-2 text-sm text-[#A6B0C2]">
+              Building digital products that move businesses forward.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-6 text-sm text-[#A6B0C2]">
+            <Link href="/privacy-policy" className="transition hover:text-white">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="transition hover:text-white">
+              Terms of Service
+            </Link>
+            <a href="mailto:techvoro.contact@gmail.com" className="transition hover:text-white">
+              Contact
+            </a>
+          </div>
+
+          <p className="text-xs text-[#A6B0C2]">
+          © 2026 Techvoro. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </main>
   );
 }
