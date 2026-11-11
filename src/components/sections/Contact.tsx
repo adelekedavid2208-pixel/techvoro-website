@@ -60,12 +60,25 @@ export default function Contact() {
         },
       });
 
-      if (!response.ok) {
-        throw new Error("Submission failed");
-      }
+      
+if (!response.ok) {
+  throw new Error("Submission failed");
+}
 
-      setSubmitted(true);
-      form.reset();
+// Track a successful enquiry in Meta Pixel
+const metaPixel = (
+  window as Window & {
+    fbq?: (...args: (string | Record<string, unknown>)[]) => void;
+  }
+).fbq;
+
+if (typeof metaPixel === "function") {
+  metaPixel("track", "Lead");
+}
+
+setSubmitted(true);
+form.reset();
+
     } catch {
       alert("Your request could not be sent. Please try again.");
     } finally {
