@@ -61,16 +61,26 @@ export default function Contact() {
       });
 
       
+
 if (!response.ok) {
   throw new Error("Submission failed");
 }
 
-// Track a successful enquiry in Meta Pixel
+// Meta Pixel Lead tracking
 const metaPixel = (
   window as Window & {
     fbq?: (...args: (string | Record<string, unknown>)[]) => void;
   }
 ).fbq;
+
+if (typeof metaPixel === "function") {
+  metaPixel("track", "Lead");
+}
+
+setSubmitted(true);
+form.reset();
+
+
 
 if (typeof metaPixel === "function") {
   metaPixel("track", "Lead");
